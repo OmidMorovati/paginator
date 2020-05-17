@@ -58,7 +58,7 @@ class PaginatorServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../config/config.php', 'paginator');
 
         // Register the main class to use with the facade
-        $this->app->singleton('paginator', function ($base_url = '/page/') {
+        $this->app->bind('paginator', function ($base_url = '/page/') {
             return new Paginator($base_url);
         });
     }
