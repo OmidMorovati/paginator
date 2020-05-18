@@ -30,12 +30,12 @@ class PaginatorServiceProvider extends ServiceProvider
 
             // Publishing assets.
             $this->publishes([
-                __DIR__.'/../resources/assets' => public_path('vendor/paginator'),
+                __DIR__ . '/../resources/assets' => public_path('vendor/omidmorovati/paginator'),
             ], 'assets');
 
             // Publishing the views.
             $this->publishes([
-                __DIR__.'/../resources/views/sample' => resource_path('views/vendor/paginator'),
+                __DIR__ . '/../resources/views/sample' => resource_path('views/vendor/omidmorovati/paginator'),
             ], 'views');
 
 
@@ -65,7 +65,25 @@ class PaginatorServiceProvider extends ServiceProvider
 
     public function loadMacros()
     {
-        $pageNumber = 1;
+        $pageNumber = $this->getPageNumber() ?? 1;
+        Builder::macro('makePaginate', function ($perPage = 1, $currentPage = null) use ($pageNumber) {
+            $currentPage = $currentPage ?? $pageNumber;
+            $modelCount = $this->get()->count();
+            Collection::macro('renderPaginate', function ($base_url = '/page/') use ($currentPage, $modelCount, $perPage) {
+                if ($currentPage) {
+                    return (new Paginator($base_url))->paginate($modelCount ?? $this->count(), $perPage, (int)$currentPage);
+                }
+                return null;
+            });
+            if ($currentPage) {
+                return $this->forPage($currentPage, $perPage);
+            }
+        });
+    }
+
+    public function getPageNumber()
+    {
+        $pageNumber=null;
         preg_match_all('/\d+$/', Request::getRequestUri(), $matches);
         if (!empty($matches[0])) {
             while (is_array($matches)) {
@@ -75,19 +93,6 @@ class PaginatorServiceProvider extends ServiceProvider
                 $matches = $pageNumber;
             }
         }
-        Builder::macro('makePaginate', function ($perPage, $currentPage = null) use ($pageNumber) {
-            $currentPage = $currentPage ?? $pageNumber;
-            $modelCount = $this->count();
-            Collection::macro('renderPaginate', function ($collectionPerPage=3) use ($currentPage, $modelCount,$perPage) {
-                if ($currentPage) {
-                    return (new Paginator())->paginate($modelCount??$this->count(), $collectionPerPage??$perPage, (int)$currentPage);
-//                    return \Paginator::paginate($modelCount, $perPage, (int)$currentPage);
-                }
-                return null;
-            });
-            if ($currentPage) {
-                return $this->forPage($currentPage, $perPage);
-            }
-        });
+        return $pageNumber;
     }
 }
