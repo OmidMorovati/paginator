@@ -35,7 +35,7 @@ class PaginatorServiceProvider extends ServiceProvider
 
             // Publishing the views.
             $this->publishes([
-                __DIR__ . '/../resources/views/sample' => resource_path('views/vendor/omidmorovati/paginator'),
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/omidmorovati/paginator'),
             ], 'views');
 
 
