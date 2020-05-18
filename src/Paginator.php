@@ -8,7 +8,7 @@ class Paginator
 
     public function __construct($base_url = null)
     {
-        $this->baseUrl = config('paginator.default_uri',$base_url);
+        $this->baseUrl = $base_url ?? config('paginator.default_uri');
     }
 
     public function paginate($total_items, $per_page, $current_page = 1)
