@@ -1,0 +1,47 @@
+.pages-numbers a, .pages-nav-item, .bp-pagination-links .page-numbers {
+    line-height: 32px;
+    padding: 0 15px;
+    border: 1px solid rgba(0,0,0,0.1);
+    border-radius: 2px;
+    display: inline-block;
+    overflow: hidden;
+}
+.pages-numbers a:not(:hover) {
+    color: #08f;
+}
+a {
+    color: #333;
+    text-decoration: none;
+    transition: 0.15s;
+}
+li {
+    text-align: -webkit-match-parent;
+}
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+
+.pages-numbers li {
+    display: inline-block;
+    margin: 3px;
+}
+.page-link:hover {
+    z-index: 2;
+    color:#08f;
+    text-decoration: none;
+    background-color: #dad9ef;
+    border-color: #08f;
+}
+
+.page-link:focus {
+    z-index: 3;
+    outline: 0;
+    box-shadow: 0 0 0 .2rem rgba(13, 0, 255, 0.25);
+}
