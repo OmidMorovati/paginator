@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Console\Commands;
+namespace OmidMorovati\Paginator;
 
 use Illuminate\Console\Command;
 
-class install extends Command
+class Installation extends Command
 {
     /**
      * The name and signature of the console command.

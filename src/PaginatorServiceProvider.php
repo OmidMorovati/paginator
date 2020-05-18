@@ -2,6 +2,8 @@
 
 namespace OmidMorovati\Paginator;
 
+
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Request;
@@ -45,7 +47,7 @@ class PaginatorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->commands([Installation::class]);
         }
     }
 
