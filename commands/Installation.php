@@ -1,6 +1,6 @@
 <?php
 
-namespace OmidMorovati\Paginator;
+namespace OmidMorovati\Paginator\Commands;
 
 use Illuminate\Console\Command;
 
