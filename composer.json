@@ -26,7 +26,7 @@
     "autoload": {
         "psr-4": {
             "OmidMorovati\\Paginator\\": "src",
-            "OmidMorovati\\Paginator\\Commands": "commands"
+            "OmidMorovati\\Paginator\\Commands\\": "commands"
         }
     },
     "autoload-dev": {

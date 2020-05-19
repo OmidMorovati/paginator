@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use OmidMorovati\Paginator\Commands\Installation;
 
 class PaginatorServiceProvider extends ServiceProvider
 {
@@ -47,7 +48,7 @@ class PaginatorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-             $this->commands([\OmidMorovati\Paginator\Commands\Installation::class]);
+             $this->commands([Installation::class]);
         }
     }
 
