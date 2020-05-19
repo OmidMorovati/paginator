@@ -47,7 +47,7 @@ class PaginatorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-             $this->commands([Installation::class]);
+             $this->commands([\OmidMorovati\Paginator\Commands\Installation::class]);
         }
     }
 

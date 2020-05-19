@@ -18,7 +18,21 @@ composer require omidmorovati/paginator
 ## Usage
 
 ``` php
-// Usage description here
+To Publish All Congfig Run This:
+php artisan omidmorovati-paginator:install
+
+
+
+To Paginate Model:
+$users=\App\User::makePaginate($perPage);
+
+To Render Model Collection:
+$users->renderPaginate();
+
+you can change default_uri in config\paginator.php
+OR 
+use as renderPaginate parameter:
+$users->renderPaginate('/page/');
 ```
 
 ### Testing
