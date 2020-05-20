@@ -37,8 +37,9 @@ class Installation extends Command
      */
     public function handle()
     {
-        $this->callSilent('vendor:publish', ['--provider'=>'omidmorovati/paginator','--tag' => 'config']);
-        $this->callSilent('vendor:publish', ['--provider'=>'omidmorovati/paginator','--tag' => 'assets']);;
-        $this->info('omidmorovati/paginator vendors was installed successfully.');
+        $this->callSilent('vendor:publish', ['--tag' => 'OMPaginatorConfig']);
+        $this->callSilent('vendor:publish', ['--tag' => 'OMPaginatorAssets']);
+        $this->callSilent('vendor:publish', ['--tag' => 'OMPaginatorViews']);
+        $this->info('omidmorovati/paginator Vendors Installed successfully.');
     }
 }
