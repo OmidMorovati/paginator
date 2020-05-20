@@ -29,17 +29,17 @@ class PaginatorServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('paginator.php'),
-            ], 'config');
+            ], 'OMPaginatorConfig');
 
             // Publishing assets.
             $this->publishes([
                 __DIR__ . '/../resources/assets' => public_path('vendor/omidmorovati/paginator'),
-            ], 'assets');
+            ], 'OMPaginatorAssets');
 
             // Publishing the views.
             $this->publishes([
                 __DIR__ . '/../resources/views' => resource_path('views/vendor/omidmorovati/paginator'),
-            ], 'views');
+            ], 'OMPaginatorViews');
 
 
             // Publishing the translation files.
