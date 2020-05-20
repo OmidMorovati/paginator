@@ -1,4 +1,4 @@
-# Suitable Paginator to Laravel Paginator
+# Suitable Paginator alternative to Laravel Paginator
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/omidmorovati/paginator.svg?style=flat-square)](https://packagist.org/packages/omidmorovati/paginator)
 [![Build Status](https://img.shields.io/travis/omidmorovati/paginator/master.svg?style=flat-square)](https://travis-ci.org/omidmorovati/paginator)
@@ -31,9 +31,9 @@ $users=\App\User::makePaginate($perPage);
 ``` php
 $users->renderPaginate();
 ```
-_you can change default_uri in config\paginator.php
+**_you can change default_uri in config\paginator.php
 OR 
-use as renderPaginate parameter:_
+use as renderPaginate parameter:_**
 ``` php
 $users->renderPaginate('/page/');
 ```
