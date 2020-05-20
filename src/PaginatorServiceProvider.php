@@ -2,10 +2,13 @@
 
 namespace OmidMorovati\Paginator;
 
+
+
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Request;
 use Illuminate\Support\ServiceProvider;
+use OmidMorovati\Paginator\Commands\Installation;
 
 class PaginatorServiceProvider extends ServiceProvider
 {
@@ -26,17 +29,17 @@ class PaginatorServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->publishes([
                 __DIR__ . '/../config/config.php' => config_path('paginator.php'),
-            ], 'config');
+            ], 'OMPaginatorConfig');
 
             // Publishing assets.
             $this->publishes([
                 __DIR__ . '/../resources/assets' => public_path('vendor/omidmorovati/paginator'),
-            ], 'assets');
+            ], 'OMPaginatorAssets');
 
             // Publishing the views.
             $this->publishes([
-                __DIR__ . '/../resources/views/sample' => resource_path('views/vendor/omidmorovati/paginator'),
-            ], 'views');
+                __DIR__ . '/../resources/views' => resource_path('views/vendor/omidmorovati/paginator'),
+            ], 'OMPaginatorViews');
 
 
             // Publishing the translation files.
@@ -45,7 +48,7 @@ class PaginatorServiceProvider extends ServiceProvider
             ], 'lang');*/
 
             // Registering package commands.
-            // $this->commands([]);
+             $this->commands([Installation::class]);
         }
     }
 
